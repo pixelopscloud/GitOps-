@@ -1,4 +1,3 @@
-cat > Welcome.java << 'EOF'
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
@@ -22,4 +21,3 @@ public class Welcome {
         System.out.println("Server started on port 80");
     }
 }
-EOF
