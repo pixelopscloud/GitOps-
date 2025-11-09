@@ -37,7 +37,7 @@ pipeline {
             steps {
                 script {
                     echo '🛑 Stopping existing containers...'
-                    dir('Three-Tier-Applications/Docker-Compose-Projects') {
+                    dir('Docker-Compose-Projects') {
                         sh '''
                             docker compose down || true
                             docker container prune -f || true
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     echo '🔨 Building Docker images...'
-                    dir('Three-Tier-Applications/Docker-Compose-Projects') {
+                    dir('Docker-Compose-Projects') {
                         sh '''
                             docker compose build --no-cache
                         '''
@@ -104,7 +104,7 @@ pipeline {
             steps {
                 script {
                     echo '🚀 Deploying application...'
-                    dir('Three-Tier-Applications/Docker-Compose-Projects') {
+                    dir('Docker-Compose-Projects') {
                         sh '''
                             docker compose up -d
                             echo "Waiting for containers to start..."
@@ -158,7 +158,7 @@ pipeline {
             echo '❌ Pipeline failed!'
             echo 'Rolling back...'
             sh '''
-                cd Three-Tier-Applications/Docker-Compose-Projects
+                cd Docker-Compose-Projects
                 docker compose down || true
             '''
         }
