@@ -2,13 +2,13 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/tomcat/webapps/
+    destination: /home/ec2-user/deploy
 hooks:
-  ApplicationStop:
-    - location: scripts/stop_server.sh
+  BeforeInstall:
+    - location: scripts/before_install.sh
       timeout: 300
       runas: root
-  ApplicationStart:
-    - location: scripts/start_server.sh
+  AfterInstall:
+    - location: scripts/after_install.sh
       timeout: 300
       runas: root
