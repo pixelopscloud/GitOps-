@@ -1,10 +1,14 @@
 version: 0.0
 os: linux
 files:
-  - source: ctk-qa1/build-output.zip
+  - source: /
     destination: /opt/tomcat/webapps/
 hooks:
   ApplicationStop:
     - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
   ApplicationStart:
     - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
